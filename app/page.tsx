@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from "react"
-import Navbar from "./components/Navbar"
+import Navbar from "./components/navbar/Navbar"
 import Timer from "./components/Timer";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
   const [seconds, setSeconds] = useState<number>(pomo /* * 60 */);
 
   const durationID = useRef<number>(0);
-  const workCount = useRef<number>(0)
+  const workCount = useRef<number>(0);
 
   const getTime = () => {
     return seconds;
@@ -38,41 +38,51 @@ export default function Home() {
     setInProgress(inProgress => !inProgress);
   }
 
-  const workSessionCompleted = () => {
-    console.log("You just earned a long break! Take a rest!")
-    reset();
-    workCount.current = 0;
-    changeDuration(2);
-  }
+  // const workSessionCompleted = () => {
+  //   console.log("You just earned a long break! Take a rest!")
+  //   reset();
+  //   workCount.current = 0;
+  //   changeDuration(2);
+  // }
 
   const timeCompleted = () => {
-    if (durationID.current == 0 && workCount.current != 4) {
+    if (durationID.current == 0) {
       ++workCount.current;
       console.log("work count is " + workCount.current);
       // if (workCount.current == 4) { return workSessionCompleted }
-    } 
-    
-    if (workCount.current == 4) { 
-      console.log('work count is 4 so we are right before workSessionCompleted!');
-      reset();
-      console.log('we just reset!');
-      workCount.current = 0;
-      console.log('we just reset workcount! work count is ' + workCount.current);
-      changeDuration(2);
-      // workSessionCompleted; 
-    } else {
-      reset();
-      nextDuration();
     }
+
+    // if (workCount.current == 4) {
+    //   console.log('work count is 4 so we are right before workSessionCompleted!');
+    //   reset();
+    //   console.log('we just reset!');
+    //   workCount.current = 0;
+    //   console.log('we just reset workcount! work count is ' + workCount.current);
+    //   changeDuration(2);
+    //   // workSessionCompleted; 
+    // } else {
+    //   reset();
+    //   nextDuration();
+    // }
+
+    reset();
+    nextDuration();
 
   }
 
   const nextDuration = () => {
-    // durationID.current = (durationID.current + 1) % 3;
 
-    if (durationID.current == 0) { durationID.current = 1 }
-    else if (durationID.current == 1) { durationID.current = 0 }
-    else if (durationID.current == 2) { durationID.current = 0 }
+    if (durationID.current == 0) {
+      if (workCount.current % 4 == 0) {
+        durationID.current = 2;
+      } else {
+        durationID.current = 1;
+      }
+    }
+
+    // if (durationID.current == 0) { durationID.current = 1 }
+    else if (durationID.current == 1 || durationID.current == 2) { durationID.current = 0 }
+    // else if (durationID.current == 2) { durationID.current = 0 }
 
     const id = durationID.current;
     console.log("current id is " + id);
@@ -87,7 +97,7 @@ export default function Home() {
     setShortBreak(SHORTBREAK);
     setLongBreak(LONGBREAK);
 
-    if(durationID.current == 0) {
+    if (durationID.current == 0) {
       setSeconds(pomo);
     } else if (durationID.current == 1) {
       setSeconds(shortBreak);
@@ -109,7 +119,7 @@ export default function Home() {
     }, 1000);
 
     return () => { clearInterval(timer); }
-  }, [seconds, timeCompleted])
+  }, [seconds, inProgress, timeCompleted])
 
   return (
     <div>
