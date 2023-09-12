@@ -65,7 +65,7 @@ const Timer: React.FC<TimerProps> = ({
 
                 <div className="flex items-center">
 
-                    <button onClick={startTimer} className="text-white bg-red-500 active:bg-red-700 text-5xl font-semibold py-2 px-5 rounded-lg active:scale-95">{inProgress ? "PAUSE" : "START"}</button>
+                    <button onClick={startTimer} className="text-white bg-rose-500 active:bg-rose-700 text-5xl font-semibold py-2 px-5 rounded-lg active:scale-95">{inProgress ? "PAUSE" : "START"}</button>
 
                     {inProgress && <div onClick={nextDuration} className="text-6xl text-neutral-800 text-opacity-1 border-2 border-neutral-800 rounded-xl ml-4"> <IoPlaySkipForwardOutline /> </div>}
 

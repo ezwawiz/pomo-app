@@ -5,16 +5,30 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import Modal from "../modals/Modal";
+import LoginModal from "../modals/LoginModal";
+import RegisterModal from "../modals/RegisterModaL";
 
 const UserMenu = () => {
     const [openMenu, setOpenMenu] = useState(false);
     const [openModal, setOpenModal] = useState(false);
+
+    const [openLoginModal, setOpenLoginModal] = useState(false);
+    const [openSignupModal, setOpenSignupModal] = useState(false);
+
 
     const toggleOpen = useCallback(() => {
         setOpenMenu(prev => !prev)
         console.log('is opened clicked');
 
     }, [])
+
+    const handleShowLoginModal = () => {
+        setOpenLoginModal(prev => !prev)
+    }
+
+    const handleShowSignupModal = () => {
+        setOpenSignupModal(prev => !prev)
+    }
 
     return (
         <div className="relative">
@@ -29,15 +43,15 @@ const UserMenu = () => {
             {openMenu && (
                 <div className="absolute rounded-xl shadow-md w-40 bg-neutral-800 overflow-hidden right-0 top-12 text-sm border border-neutral-700">
                     <div className="flex flex-col cursor-pointer">
-                        <>
-                            <MenuItem onClick={() => setOpenModal(prev => !prev)} label="Login" />
-                            <MenuItem onClick={() => { }} label="Sign up" />
-                        </>
+                        <MenuItem onClick={handleShowLoginModal} label="Login" />
+                        <MenuItem onClick={handleShowSignupModal} label="Sign up" />
                     </div>
                 </div>
             )}
 
-            {openModal && <Modal openModal={openModal} />}
+            {openLoginModal && <LoginModal handleShowModal={handleShowLoginModal} />}
+            {openSignupModal && <RegisterModal handleShowModal={handleShowSignupModal} />}
+
         </div>
     );
 }
