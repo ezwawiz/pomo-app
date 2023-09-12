@@ -4,12 +4,14 @@ import { AiOutlineMenu } from "react-icons/ai"
 import Image from "next/image";
 import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
+import Modal from "../modals/Modal";
 
 const UserMenu = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const toggleOpen = useCallback(() => {
-        setIsOpen(prev => !prev)
+        setOpenMenu(prev => !prev)
         console.log('is opened clicked');
 
     }, [])
@@ -24,16 +26,18 @@ const UserMenu = () => {
                     </div>
                 </div>
             </div >
-            {isOpen && (
-                <div className="absolute rounded-xl shadow-md w-40  overflow-hidden right-0 top-12 text-sm border border-neutral-800">
+            {openMenu && (
+                <div className="absolute rounded-xl shadow-md w-40 bg-neutral-800 overflow-hidden right-0 top-12 text-sm border border-neutral-700">
                     <div className="flex flex-col cursor-pointer">
                         <>
-                            <MenuItem onClick={() => { }} label="Login" />
+                            <MenuItem onClick={() => setOpenModal(prev => !prev)} label="Login" />
                             <MenuItem onClick={() => { }} label="Sign up" />
                         </>
                     </div>
                 </div>
             )}
+
+            {openModal && <Modal openModal={openModal} />}
         </div>
     );
 }

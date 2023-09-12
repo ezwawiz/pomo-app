@@ -36,7 +36,7 @@ const Timer: React.FC<TimerProps> = ({
 
             <div className="flex gap-6 font-semibold">
                 <button onClick={() => durationChange(1)} className="bg-sky-500 active:bg-sky-600 py-1 px-3 rounded text-white">Short Break</button>
-                <button onClick={() => durationChange(0)} className="bg-neutral-800 active:bg-neutral-700 p-1 px-3 rounded text-white ">Work</button>
+                <button onClick={() => durationChange(0)} className="bg-neutral-800 active:bg-neutral-800 active:scale-110 hover:bg-neutral-500 p-1 px-3 rounded text-white">Work</button>
                 <button onClick={() => durationChange(2)} className="bg-indigo-500 active:bg-indigo-700 p-1 px-3 rounded text-white">Long Break</button>
 
                 {/* <button className="text-lg px-4 border border-neutral-800 rounded-lg hover:bg-lime-400/40 focus:bg-lime-400 active:scale-105 transition">Winner</button> */}

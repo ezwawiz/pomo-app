@@ -1,15 +1,13 @@
-import { IoPersonSharp, IoSettingsSharp, IoBarChart } from "react-icons/io5"
+import { IoSettingsSharp, IoBarChart } from "react-icons/io5"
 import UserMenu from "./UserMenu";
 
 const Navbar = () => {
     return (
-        <div className="flex items-center justify-end gap-3 p-4 text-3xl">
+        <nav className="flex items-center justify-end gap-4 p-6 text-3xl mb-10">
             <UserMenu />
-            {/* <IoPersonSharp className="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded p-1" /> */}
-            <IoBarChart className="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded p-1" />
-            <IoSettingsSharp className="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded p-1" />
-
-        </div>
+            <IoBarChart className="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded p-1 cursor-pointer" />
+            <IoSettingsSharp className="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded p-1 cursor-pointer" />
+        </nav>
     );
 }
 
