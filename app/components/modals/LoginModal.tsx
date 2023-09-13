@@ -1,6 +1,7 @@
 import Modal from "./Modal";
 import { useForm } from "react-hook-form"
 
+
 interface LoginModalProps {
     handleShowModal: () => void;
 }
@@ -47,7 +48,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
 
     const footerContent = (
         <div className="flex gap-2 self-center text-sm opacity-60 mb-6">
-            <div>Dont already have an account?</div>
+            <p>Don't already have an account?</p>
             <button className="hover:underline font-semibold">Sign-up</button>
         </div>
     )

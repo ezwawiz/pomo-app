@@ -24,7 +24,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
     const bodyContent = (
         <form className="w-full" onSubmit={handleSubmit((data) => {
-            console.log(data)
+            console.log('hey there this is the data: ' + data)
         })}>
             <input className="text-black rounded p-2 h-8 my-2 w-full" {...register("username", { required: "Username is required" })} placeholder="Username" />
             <p className="text-xs text-red-200"> {errors.username?.message} </p>
@@ -47,7 +47,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
 
     const footerContent = (
         <div className="flex gap-2 self-center text-sm opacity-60 mb-6">
-            <div>Already have an account?</div>
+            <p>Already have an account?</p>
             <button className="hover:underline font-semibold">Login</button>
         </div>
     )

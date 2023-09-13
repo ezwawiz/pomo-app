@@ -30,18 +30,18 @@ const UserMenu = () => {
         setOpenSignupModal(prev => !prev)
     }
 
+    // "dark:bg-neutral-800 dark:hover:bg-neutral-600 bg-neutral-200 hover:bg-neutral-100 border dark:border-neutral-700 border-neutral-100 rounded p-1 cursor-pointer"
+
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
-                <div onClick={toggleOpen} className="md:py-1 md:px-2 bg-neutral-800 border border-neutral-700 flex flex-row items-center gap-3 rounded-xl cursor-pointer hover:shadow-md transition">
+                <div onClick={toggleOpen} className="py-1 px-2 dark:bg-neutral-800 bg-neutral-200 border dark:border-neutral-700 border-neutral-100 flex flex-row items-center gap-3 rounded-xl cursor-pointer hover:shadow-md transition">
                     <AiOutlineMenu size={24} />
-                    <div className="hidden md:block">
-                        <Image className="rounded-full" height={24} width={24} alt="profile" src="/images/placeholder.jpg" />
-                    </div>
+                    <Image className="rounded-full" height={24} width={24} alt="profile" src="/images/placeholder.jpg" />
                 </div>
             </div >
             {openMenu && (
-                <div className="absolute rounded-xl shadow-md w-40 bg-neutral-800 overflow-hidden right-0 top-12 text-sm border border-neutral-700">
+                <div className="absolute rounded-xl shadow-md w-40 dark:bg-neutral-800 bg-neutral-200 overflow-hidden right-0 top-12 text-sm border dark:border-neutral-700 border-neutral-100">
                     <div className="flex flex-col cursor-pointer">
                         <MenuItem onClick={handleShowLoginModal} label="Login" />
                         <MenuItem onClick={handleShowSignupModal} label="Sign up" />
