@@ -48,7 +48,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
 
     const footerContent = (
         <div className="flex gap-2 self-center text-sm opacity-60 mb-6">
-            <p>Don't already have an account?</p>
+            <p>Don&apos;t already have an account?</p>
             <button className="hover:underline font-semibold">Sign-up</button>
         </div>
     )
